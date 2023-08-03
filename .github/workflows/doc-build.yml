@@ -56,8 +56,4 @@ jobs:
 
     - name: Call clojure-api-doc build.sh
       run:  |
-        echo "Script Local"
-        echo pwd
-        echo "Script surroundings"
-        echo ls
         bash ./debug.sh
