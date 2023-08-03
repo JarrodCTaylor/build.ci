@@ -1,0 +1,74 @@
+name: Release on demand
+
+on:
+  workflow_call:
+    inputs:
+      project:
+        description: "Github repo to build docs for"
+        required: true
+        default: "JarrodCTaylor/data.fressian"
+        type: string
+      mavenDep:
+        description: "Used to pull the deps for the project being doc'ed'"
+        required: true
+        default: "org.clojure/data.fressian"
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: 8
+        distribution: 'temurin'
+
+    - name: Set up Clojure
+      uses: DeLaGuardo/setup-clojure@11.0
+      with:
+          cli: 'latest'
+
+    - name: Cache clojure dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.m2/repository
+          ~/.gitlibs
+        key: cljdeps-${{ hashFiles('deps.edn') }}
+        restore-keys: cljdeps-
+
+     build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: 8
+        distribution: 'temurin'
+
+    - name: Set up Clojure
+      uses: DeLaGuardo/setup-clojure@11.0
+      with:
+          cli: 'latest'
+
+    - name: Cache clojure dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.m2/repository
+          ~/.gitlibs
+        key: cljdeps-${{ hashFiles('deps.edn') }}
+        restore-keys: cljdeps-
+
+    - name: Clone repo to doc
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ inputs.project }}
+        path: this-worked # clojure-api-doc
+        fetch-depth: 0
+
+    - name: Call clojure-api-doc build.sh
+      run:  bash ${GITHUB_WORKSPACE}/debug.sh
