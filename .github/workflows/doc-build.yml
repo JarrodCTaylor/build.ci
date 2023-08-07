@@ -63,4 +63,6 @@ jobs:
 
     - name: Call clojure-api-doc build.sh
       run:  |
+        echo "The fuck?"
+        ls
         bash ./build.ci/debug.sh
