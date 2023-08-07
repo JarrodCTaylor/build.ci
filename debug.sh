@@ -4,7 +4,14 @@ echo "version=$version"
 
 # Copy stable site files
 echo "Copying static site files"
-cp -R contrib/site/* repo-docs
+cp -R site/* repo-docs
 
-echo "Status"
-ls
+# Run autodoc-collect
+echo "Analyzing $PROJECT"
+rm -f analysis.edn
+echo "(def PROJECT \"$PROJECT\") (def VERSION \"$version\")" > proj.clj
+cat proj.clj collect.clj | clojure -Sforce -J-Dclojure.spec.skip-macros=true -Sdeps '{:deps {org.clojure/data.fressian {:mvn/version "RELEASE"}}}' -M:collect -
+
+# Run autodoc
+### echo "Building $PROJECT"
+### cat proj.clj build.clj | clojure -M:build -
