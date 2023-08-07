@@ -3,3 +3,7 @@ echo "Where we are"
 pwd
 echo "What we can see"
 ls
+echo "Moving up"
+cd ..
+echo "Contents:"
+ls
