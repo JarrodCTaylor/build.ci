@@ -44,14 +44,14 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: ${{ inputs.project }}
-        path: this-worked # clojure-api-doc
+        path: repo # clojure-api-doc
         fetch-depth: 0
 
     - name: Clone build repo
       uses: actions/checkout@v3
       with:
         repository: JarrodCTaylor/build.ci
-        # path: this-worked # clojure-api-doc
+        path: build.ci
         fetch-depth: 0
 
     - name: Call clojure-api-doc build.sh
