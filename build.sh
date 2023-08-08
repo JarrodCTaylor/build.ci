@@ -1,12 +1,6 @@
 PROJECT="$(echo "$1" | rev | cut -d/ -f1 | rev)"
 
-echo "Starting:"
-echo "Project: ${PROJECT}"
-
 cd repo
-
-echo "List:"
-ls
 
 cp -r contrib-api-doc/* .
 
@@ -27,3 +21,4 @@ cat proj.clj collect.clj | clojure -Sforce -J-Dclojure.spec.skip-macros=true -Sd
 echo "Building $PROJECT"
 cat proj.clj build.clj | clojure -M:build -
 
+tree
