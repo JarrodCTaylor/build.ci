@@ -64,11 +64,10 @@ jobs:
       run: |
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
-        # git config --global push.default simple
         cd repo/repo-docs
-        # echo "Show that origin"
-        # git remote show origin
-        git checkout gh-pages
+        echo "What is here?"
+        ls
+        git checkout -f gh-pages
         git add -u -v
         git commit -m "Autodoc commit"
         git push origin gh-pages
