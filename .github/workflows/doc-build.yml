@@ -71,13 +71,7 @@ jobs:
     - name: Commit and push gh-pages branch
       run: |
         cd contrib-repo
-        echo "What now?"
-        cat ../contrib-api-doc/repo-docs/index.html
-        echo "==="
-        ls ../contrib-api-doc/repo-docs/
-        cp -r ../contrib-api-doc/repo-docs/ .
-        # echo "After"
-        cat index.html
+        cp -r ../contrib-api-doc/repo-docs/* .
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
         git add -u -v
