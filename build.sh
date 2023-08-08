@@ -11,6 +11,11 @@ echo "version=$version"
 echo "Copying static site files"
 cp -R site/* repo-docs
 
+echo "Where are we and what is here?"
+pwd
+echo "===="
+ls
+
 # Run autodoc-collect
 echo "Analyzing $PROJECT"
 rm -f analysis.edn
