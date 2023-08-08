@@ -78,7 +78,7 @@ jobs:
         echo "===="
         git remote show origin
         echo "<><><>"
-        cp ../contrib-api-doc/repo-docs/* .
+        cp ../contrib-api-doc/repo-docs/ .
         echo "<><><>"
         ls
         # git config --global user.name clojure-build
