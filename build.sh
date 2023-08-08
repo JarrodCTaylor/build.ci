@@ -1,7 +1,5 @@
 PROJECT="$(echo "$1" | rev | cut -d/ -f1 | rev)"
 
-echo "Project: $PROJECT"
-
 version="$(cd repo && mvn -q -N org.codehaus.mojo:exec-maven-plugin:1.3.1:exec -Dexec.executable='echo' -Dexec.args='${project.version}' | tail -1)"
 echo "version=$version"
 
@@ -19,6 +17,3 @@ cat proj.clj collect.clj | clojure -Sforce -J-Dclojure.spec.skip-macros=true -Sd
 echo "Building $PROJECT"
 cat proj.clj build.clj | clojure -M:build -
 
-echo "Wrap UP?"
-ls
-cat repo-docs/api-index.html

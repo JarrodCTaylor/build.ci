@@ -8,11 +8,6 @@ on:
         required: true
         default: "JarrodCTaylor/data.fressian"
         type: string
-      mavenDep:
-        description: "Used to pull the deps for the project being doc'ed'"
-        required: true
-        default: "org.clojure/data.fressian"
-        type: string
 
 jobs:
 
@@ -63,6 +58,13 @@ jobs:
 
     - name: Call clojure-api-doc build.sh
       run:  |
-        echo "The fuck?"
-        ls
-        bash ./build.ci/debug.sh ${{ inputs.project }}
+        bash ./build.ci/build.sh ${{ inputs.project }}
+
+    - name: Commit
+      run: |
+        git config --global user.name clojure-build
+        git config --global user.email "clojure-build@users.noreply.github.com"
+        cd repo-docs
+        git add -u -v
+        git commit -m "Autodoc commit"
+        git push origin gh-pages
