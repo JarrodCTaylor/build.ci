@@ -67,6 +67,6 @@ jobs:
         cd repo
         git checkout -f gh-pages
         cp -r repo-docs/* .
-        git add -v .
+        git add -u -v
         git commit -m "Autodoc commit"
         git push origin gh-pages
