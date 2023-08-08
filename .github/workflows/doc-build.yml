@@ -71,8 +71,11 @@ jobs:
     - name: Commit and push gh-pages branch
       run: |
         cd contrib-repo
+        echo "Before"
+        cat index.html
         cp -r ../contrib-api-doc/repo-docs/ .
-        tree
+        echo "After"
+        cat index.html
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
         git add -u -v
