@@ -1,9 +1,6 @@
 PROJECT="$(echo "$1" | rev | cut -d/ -f1 | rev)"
 
-cd repo
-
-echo "What is in repo?"
-ls
+cd contrib-api-doc
 
 cp -r contrib-api-doc/* .
 
