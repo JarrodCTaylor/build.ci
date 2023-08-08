@@ -5,6 +5,7 @@ echo "version=$version"
 
 # Copy stable site files
 echo "Copying static site files"
+ls
 cp -R contrib-api-doc/site/* repo-docs
 
 # Run autodoc-collect
