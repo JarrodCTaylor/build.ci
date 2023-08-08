@@ -16,3 +16,7 @@ cat proj.clj collect.clj | clojure -Sforce -J-Dclojure.spec.skip-macros=true -Sd
 # Run autodoc
 echo "Building $PROJECT"
 cat proj.clj build.clj | clojure -M:build -
+
+echo "Wrap UP?"
+ls
+tree
