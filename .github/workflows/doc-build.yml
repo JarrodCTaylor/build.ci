@@ -65,10 +65,9 @@ jobs:
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
         cd repo/repo-docs
-        echo "What is here?"
-        cat index.html
-        echo "Status"
-        git status
+        echo "Crazy >>>>"
+        ls
+        echo "<<<< Pills"
         git checkout -f gh-pages
         git add -u -v
         git commit -m "Autodoc commit"
