@@ -35,13 +35,6 @@ jobs:
         key: cljdeps-${{ hashFiles('deps.edn') }}
         restore-keys: cljdeps-
 
-    - name: Clone contrib api repo
-      uses: actions/checkout@v3
-      with:
-        repository: JarrodCTaylor/contrib-api-doc
-        # path: contrib
-        fetch-depth: 0
-
     - name: Clone repo to doc
       uses: actions/checkout@v3
       with:
@@ -49,16 +42,23 @@ jobs:
         path: repo
         fetch-depth: 0
 
+    - name: Clone contrib api repo
+      uses: actions/checkout@v3
+      with:
+        repository: JarrodCTaylor/contrib-api-doc
+        path: repo/contrib-api-doc
+        fetch-depth: 0
+
     - name: Clone build repo
       uses: actions/checkout@v3
       with:
         repository: JarrodCTaylor/build.ci
-        path: build.ci
+        path: repo/build.ci
         fetch-depth: 0
 
     - name: Call clojure-api-doc build.sh
       run:  |
-        bash ./build.ci/build.sh ${{ inputs.project }}
+        bash ./repo/build.ci/build.sh ${{ inputs.project }}
 
     - name: Commit
       run: |
