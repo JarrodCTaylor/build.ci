@@ -69,6 +69,6 @@ jobs:
         ls
         echo "<<<< Pills"
         git checkout -f gh-pages
-        git add -u -v
+        git add -v .
         git commit -m "Autodoc commit"
         git push origin gh-pages
