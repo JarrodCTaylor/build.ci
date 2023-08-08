@@ -64,9 +64,8 @@ jobs:
       run: |
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
-        cd repo
+        cd repo-docs
         git checkout -f gh-pages
-        cp -r repo-docs/* .
         git add -u -v
         git commit -m "Autodoc commit"
         git push origin gh-pages
