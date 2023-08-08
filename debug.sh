@@ -19,4 +19,4 @@ cat proj.clj build.clj | clojure -M:build -
 
 echo "Wrap UP?"
 ls
-tree
+cat repo-docs/api-index.html
