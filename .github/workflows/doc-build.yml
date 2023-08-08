@@ -65,6 +65,12 @@ jobs:
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
         cd contrib-api-doc/repo-docs
+        echo "Where are we now?"
+        pwd
+        echo "===="
+        ls
+        echo "<><><>"
+        git remote show origin
         git checkout -f gh-pages
         git add -u -v
         git commit -m "Autodoc commit"
