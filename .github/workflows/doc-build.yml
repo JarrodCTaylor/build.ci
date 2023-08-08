@@ -49,6 +49,14 @@ jobs:
         path: contrib-api-doc/repo
         fetch-depth: 0
 
+    - name: Clone repo to doc
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ inputs.project }}
+        path: contrib-repo
+        ref: 'gh-pages'
+        fetch-depth: 0
+
     - name: Clone build repo
       uses: actions/checkout@v3
       with:
@@ -62,6 +70,7 @@ jobs:
 
     - name: Commit
       run: |
+        cd contrib-repo
         echo "Where are we now?"
         pwd
         echo "===="
@@ -69,7 +78,7 @@ jobs:
         echo "===="
         git remote show origin
         echo "<><><>"
-        cp contrib-api-doc/repo-docs/* .
+        cp ../contrib-api-doc/repo-docs/* .
         echo "<><><>"
         ls
         # git config --global user.name clojure-build
