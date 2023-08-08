@@ -74,4 +74,5 @@ jobs:
         git checkout -f gh-pages
         git add -u -v
         git commit -m "Autodoc commit"
+        git config --global push.default simple
         git push origin gh-pages
