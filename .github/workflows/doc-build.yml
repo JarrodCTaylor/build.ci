@@ -64,10 +64,8 @@ jobs:
       run: |
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
-        cd repo/repo-docs
-        echo "Crazy >>>>"
-        ls
-        echo "<<<< Pills"
+        cd repo
+        cp -r repo-docs .
         git checkout -f gh-pages
         git add -v .
         git commit -m "Autodoc commit"
