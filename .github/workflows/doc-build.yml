@@ -72,6 +72,7 @@ jobs:
       run: |
         cd contrib-repo
         cp -r ../contrib-api-doc/repo-docs/ .
+        tree
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
         git add -u -v
