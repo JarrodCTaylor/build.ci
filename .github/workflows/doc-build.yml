@@ -64,6 +64,10 @@ jobs:
       run: |
         git config --global user.name clojure-build
         git config --global user.email "clojure-build@users.noreply.github.com"
+        echo "Where are we?"
+        pwd
+        echo "==="
+        ls
         cd repo-docs
         git add -u -v
         git commit -m "Autodoc commit"
