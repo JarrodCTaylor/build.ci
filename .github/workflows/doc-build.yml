@@ -57,16 +57,9 @@ jobs:
         ref: 'gh-pages'
         fetch-depth: 0
 
-    - name: Clone build scripts repo
-      uses: actions/checkout@v3
-      with:
-        repository: JarrodCTaylor/build.ci
-        path: contrib-api-doc/build.ci
-        fetch-depth: 0
-
     - name: Call contrib-api-doc build.sh
       run:  |
-        bash ./contrib-api-doc/build.ci/build.sh ${{ inputs.project }}
+        bash ./contrib-api-doc/build.sh ${{ inputs.project }}
 
     - name: Commit and push gh-pages branch
       run: |
